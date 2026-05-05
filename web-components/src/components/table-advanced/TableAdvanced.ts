@@ -77,6 +77,13 @@ export namespace TableAdvanced {
       this.populateTable();
     }
 
+    protected willUpdate(changedProperties: PropertyValues): void {
+      super.willUpdate?.(changedProperties);
+      if (changedProperties.has("data") && changedProperties.get("data") !== undefined) {
+        this.error = "";
+      }
+    }
+
     protected update(changedProperties: PropertyValues) {
       super.update(changedProperties);
       if (changedProperties.has("data")) {
